@@ -42,13 +42,13 @@ CC3D_TARGETS = CC3D CC3D_OPBL CC3D_PPM1
 
 64K_TARGETS  = CJMCU
 128K_TARGETS = ALIENWIIF1 $(CC3D_TARGETS) NAZE OLIMEXINO RMDO
-256K_TARGETS = ALIENWIIF3 CHEBUZZF3 COLIBRI_RACE EUSTM32F103RC LUX_RACE MOTOLAB NAZE32PRO PORT103R SPARKY SPRACINGF3 STM32F3DISCOVERY
+256K_TARGETS = ALIENWIIF3 CHEBUZZF3 COLIBRI_RACE EUSTM32F103RC LUX_RACE MOTOLAB NAZE32PRO PORT103R SPARKY SPRACINGF3 SPRACINGF3EVO STM32F3DISCOVERY
 
-F3_TARGETS = ALIENWIIF3 CHEBUZZF3 COLIBRI_RACE LUX_RACE MOTOLAB NAZE32PRO RMDO SPARKY SPRACINGF3 STM32F3DISCOVERY
+F3_TARGETS = ALIENWIIF3 CHEBUZZF3 COLIBRI_RACE LUX_RACE MOTOLAB NAZE32PRO RMDO SPARKY SPRACINGF3 SPRACINGF3EVO STM32F3DISCOVERY
 
 VALID_TARGETS = $(64K_TARGETS) $(128K_TARGETS) $(256K_TARGETS)
 
-VCP_TARGETS = $(CC3D_TARGETS) ALIENWIIF3 CHEBUZZF3 COLIBRI_RACE LUX_RACE MOTOLAB NAZE32PRO SPARKY STM32F3DISCOVERY
+VCP_TARGETS = $(CC3D_TARGETS) ALIENWIIF3 CHEBUZZF3 COLIBRI_RACE LUX_RACE MOTOLAB NAZE32PRO SPARKY STM32F3DISCOVERY SPRACINGF3EVO
 
 # Valid targets for OP BootLoader support
 OPBL_TARGETS = CC3D_OPBL
@@ -675,6 +675,32 @@ SPRACINGF3_SRC = \
             io/flashfs.c \
             $(HIGHEND_SRC) \
             $(COMMON_SRC)
+
+SPRACINGF3EVO_SRC	 = \
+		   $(STM32F30x_COMMON_SRC) \
+		   drivers/accgyro_mpu.c \
+		   drivers/accgyro_mpu6500.c \
+		   drivers/accgyro_spi_mpu6500.c \
+		   drivers/barometer_bmp085.c \
+		   drivers/barometer_ms5611.c \
+		   drivers/barometer_bmp280.c \
+		   drivers/compass_mag3110.c \
+		   drivers/compass_ak8975.c \
+		   drivers/compass_hmc5883l.c \
+		   drivers/display_ug2864hsweg01.h \
+		   drivers/light_ws2811strip.c \
+		   drivers/light_ws2811strip_stm32f30x.c \
+		   drivers/serial_usb_vcp.c \
+		   $(HIGHEND_SRC) \
+		   $(COMMON_SRC) \
+		   $(VCP_SRC)
+#		   drivers/sdcard.c \
+#		   drivers/sdcard_standard.c \
+#		   drivers/transponder_ir.c \
+#		   drivers/transponder_ir_stm32f30x.c \
+#		   io/asyncfatfs/asyncfatfs.c \
+#		   io/asyncfatfs/fat_standard.c \
+#		   io/transponder_ir.c \
 
 MOTOLAB_SRC = \
             $(STM32F30x_COMMON_SRC) \
